@@ -1,3 +1,4 @@
+import { User } from './../auth/user.entity';
 import { TaskRepository } from './task.repository';
 import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 import { CreateTaskDto } from './dto/create-task.dto';
@@ -35,8 +36,8 @@ export class TasksService {
     }
   }
 
-  async createTask(createTaskDto: CreateTaskDto) {
-    return this.taskRepository.createTask(createTaskDto);
+  async createTask(createTaskDto: CreateTaskDto, user: User) {
+    return this.taskRepository.createTask(createTaskDto, user);
   }
 
   async updateTaskStatus(id: number, status: TaskStatus): Promise<Task> {
